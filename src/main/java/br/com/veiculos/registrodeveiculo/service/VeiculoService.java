@@ -14,6 +14,8 @@ public interface VeiculoService {
 	Veiculo save(VeiculoForm form);
 	
 	List<Veiculo> findAll();
+
+	Veiculo findById(Long id);
 	
 	
 
