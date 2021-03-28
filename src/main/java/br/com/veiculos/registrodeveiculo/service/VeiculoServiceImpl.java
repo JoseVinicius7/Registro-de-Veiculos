@@ -11,12 +11,10 @@ import br.com.veiculos.registrodeveiculo.repository.VeiculoRepository;
 
 @Service
 public class VeiculoServiceImpl implements VeiculoService {
-  
-	
+
 	@Autowired
 	private VeiculoRepository veiculoRepository;
-	
-	
+
 	@Override
 	public List<Veiculo> findAll() {
 		return veiculoRepository.findAll();
@@ -25,9 +23,9 @@ public class VeiculoServiceImpl implements VeiculoService {
 	@Override
 	public Veiculo save(VeiculoForm form) {
 		Veiculo veiculo = form.converter();
-		
-		return veiculoRepository.save(veiculo);
-		
-	}
 
+		return veiculoRepository.save(veiculo);
+
+	}
+	
 }
