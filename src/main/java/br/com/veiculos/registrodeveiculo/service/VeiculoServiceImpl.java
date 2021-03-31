@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.com.veiculos.registrodeveiculo.controller.form.AtualizacaoVeiculoForm;
 import br.com.veiculos.registrodeveiculo.controller.form.VeiculoForm;
 import br.com.veiculos.registrodeveiculo.exception.VeiculoNotFoundException;
 import br.com.veiculos.registrodeveiculo.models.Veiculo;
@@ -29,12 +30,22 @@ public class VeiculoServiceImpl implements VeiculoService {
 		return veiculoRepository.save(veiculo);
 
 	}
-	
+
 	@Override
 	public Veiculo findById(Long id) {
 		Optional<Veiculo> veiculo = veiculoRepository.findById(id);
-		
-		return veiculo.orElseThrow(() -> new VeiculoNotFoundException("Pessoa de id " + id + " não encontrada."));
+
+		return veiculo.orElseThrow(() -> new VeiculoNotFoundException("Veiculo de id " + id + " não encontrado."));
 	}
-	
+
+	@Override
+	public Veiculo update(Long id, AtualizacaoVeiculoForm form) {
+		Optional<Veiculo> optional = veiculoRepository.findById(id);
+		if (!optional.isPresent()) {
+			throw new VeiculoNotFoundException("Veiculo de id " + id + " não encontrado.");
+		}
+		Veiculo veiculo = form.atualizar(id, veiculoRepository);
+		return veiculo;
+	}
+
 }
