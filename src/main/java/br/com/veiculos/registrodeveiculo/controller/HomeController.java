@@ -67,7 +67,7 @@ public class HomeController {
 	
 	public ResponseEntity<?> remover (@PathVariable long id){
 		
-		veiculoService.delete(id);
+		veiculoService.remover(id);
 		
 		return ResponseEntity.noContent().build();
 	}

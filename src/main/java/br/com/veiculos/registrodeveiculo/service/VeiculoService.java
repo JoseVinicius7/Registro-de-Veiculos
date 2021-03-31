@@ -20,7 +20,7 @@ public interface VeiculoService {
 
 	Veiculo update(Long id, AtualizacaoVeiculoForm form);
 
-	void delete(long id);
+	void remover(long id);
 	
 	
 
