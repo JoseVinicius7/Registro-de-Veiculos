@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,6 +35,13 @@ public class HomeController {
 		return veiculoService.findAll();
 	}
 	
+	@GetMapping("/{id}")
+	public ResponseEntity<VeiculoDto> detalhar(@PathVariable Long id) {
+		Veiculo veiculo = veiculoService.findById(id);
+
+		return ResponseEntity.ok(new VeiculoDto(veiculo));
+
+	}
 	@PostMapping
 	@Transactional
 	public ResponseEntity<VeiculoDto> cadastrar(@RequestBody @Validated VeiculoForm form,
@@ -42,5 +50,5 @@ public class HomeController {
 		URI uri = uriBuilder.path("/veiculo/{id}").buildAndExpand(veiculo.getId()).toUri();
 		return ResponseEntity.created(uri).body(new VeiculoDto(veiculo));
 	};
-
+	
 }
