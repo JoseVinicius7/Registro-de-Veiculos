@@ -48,4 +48,13 @@ public class VeiculoServiceImpl implements VeiculoService {
 		return veiculo;
 	}
 
+	@Override
+	public void delete(long id) {
+		Optional<Veiculo> optional = veiculoRepository.findById(id);
+		if (!optional.isPresent()) {
+			throw new VeiculoNotFoundException("Veiculo de id " + id + " não encontrado.");
+		}
+		veiculoRepository.deleteById(id);
+
+	}
 }

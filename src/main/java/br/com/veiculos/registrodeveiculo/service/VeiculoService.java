@@ -19,6 +19,8 @@ public interface VeiculoService {
 	Veiculo findById(Long id);
 
 	Veiculo update(Long id, AtualizacaoVeiculoForm form);
+
+	void delete(long id);
 	
 	
 
