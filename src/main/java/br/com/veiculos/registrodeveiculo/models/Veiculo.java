@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import com.sun.istack.NotNull;
 
 @Entity
-public class Veiculo extends Modelo {
+public class Veiculo{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

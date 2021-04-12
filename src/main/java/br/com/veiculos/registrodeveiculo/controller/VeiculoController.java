@@ -27,7 +27,7 @@ import br.com.veiculos.registrodeveiculo.service.VeiculoService;
 @RestController
 @RequestMapping("/veiculo")
 
-public class HomeController {
+public class VeiculoController {
 
 	@Autowired
 	private VeiculoService veiculoService;
